@@ -1,6 +1,6 @@
 import { Client, LocalAuth } from "whatsapp-web.js";
 import qrcode from 'qrcode-terminal';
-import TestHandlerClass from "./tests";
+import TestHandlerClass from "./Test";
 
 async function startClient() {
     const client = new Client({
@@ -12,7 +12,7 @@ async function startClient() {
     });
 
     client.on('message_create', (message) => {
-        TestHandlerClass.handleMessage(message);
+        TestHandlerClass.handleMessage(message, client);
     })
 
     await client.initialize();

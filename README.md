@@ -8,7 +8,7 @@ Then, just run the following commands:
 npm install # Or you can use yarn install
 ```
 then
-```
+```sh
 npm run button-test # Or you can use yarn button-test
 ```
 
