@@ -4,8 +4,8 @@
   "description": "A utility to diagnose and study how buttons behave.",
   "main": "index.js",
   "scripts": {
-    "build": "",
-    "buttons-test": "npm build && node ./dist/index"
+    "build": "tsc",
+    "buttons-test": "npm run build && node ./dist/index"
   },
   "repository": {
     "type": "git",
