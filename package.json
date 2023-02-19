@@ -1,8 +1,8 @@
 {
   "name": "buttons-test",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A utility to diagnose and study how buttons behave.",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
     "buttons-test": "npm run build && node ./dist/index"
