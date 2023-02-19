@@ -1,5 +1,5 @@
 import { Message, MessageTypes, Client } from "whatsapp-web.js";
-import { tests } from "./tests";
+import { tests } from "./tests/index.js";
 
 type StateData = {
     currentState: number;
@@ -8,17 +8,6 @@ type StateData = {
 
 export const data: { [jid: string]: StateData } = {};
 
-export class Test {
-    name: string;
-    description: string;
-
-    constructor(name: string, description: string) {
-        this.name = name;
-        this.description = description;
-    }
-
-    async handle(message: Message): Promise<void> {}
-}
 export default class TestHandlerClass {
 
     static async handleMessage(message: Message, client: Client) {

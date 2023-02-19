@@ -1,6 +1,7 @@
-import { Client, LocalAuth } from "whatsapp-web.js";
+import * as wwebjs from "whatsapp-web.js";
+const { Client, LocalAuth } = wwebjs;
 import qrcode from 'qrcode-terminal';
-import TestHandlerClass from "./Test";
+import TestHandlerClass from "./Test.js";
 
 async function startClient() {
     const client = new Client({
