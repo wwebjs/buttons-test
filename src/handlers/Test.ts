@@ -46,7 +46,7 @@ export default class TestHandlerClass {
 
                 const [action, choice] = message.body.split(" ").slice(1);
 
-                if (!action) {
+                if (!action && !data[message.author || message.from]) {
                     const msg = await message.reply("Welcome to the ButtonsTest diagnosis tool, this tool will allow you to diagnose buttons for your system");
                     await msg.reply("I've already detected that your viewing system is *"+message.deviceType+"*\nIs that OK? Send 'buttons-test switch IOS [or] ANDROID [or] WEB (WEB and MACOS are WEB)\n\nWhen unable to see a button, just type buttons-test again.");
                 } else if (action == "switch") {
@@ -56,6 +56,9 @@ export default class TestHandlerClass {
                     } else {
                         return message.reply('Invalid choice, must be IOS, ANDROID, OR WEB')
                     }
+                } else if (action == 'reset') {
+                    delete data[message.author || message.from];
+                    message.reply("Reset")
                 }
 
                 if (!data[message.author || message.from]) { 
@@ -67,7 +70,12 @@ export default class TestHandlerClass {
                     data[message.author || message.from].currentState++;
                 }
 
-                await tests[data[message.author || message.from].currentState].handle(message);
+                if (tests[data[message.author || message.from].currentState]) {
+                    await tests[data[message.author || message.from].currentState].handle(message);
+                } else {
+                    message.reply('End of tests, type ```buttons-test reset``` to reset.')
+                }
+                
             }
         }
     }
