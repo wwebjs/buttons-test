@@ -7,7 +7,7 @@ type StateData = {
     platform: 'android' | 'ios' | 'web';
 };
 
-export const data: { [jid: string]: StateData } = {};
+const data: { [jid: string]: StateData } = {};
 
 export default class TestHandlerClass {
 

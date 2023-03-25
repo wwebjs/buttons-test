@@ -7,7 +7,8 @@ export class Test1 extends Test {
     }
 
     async handle(message) {
-        const buttons = new Buttons('Test', [{body: 'Test', id: 'test:1;;pass'}]);
+        const buttons = new Buttons('Test', [{body: 'Test', id: 'test:1;;pass'}], null, null);
         message.reply(buttons);
+        message.reply('[test-1] Sent.');
     }
 }
