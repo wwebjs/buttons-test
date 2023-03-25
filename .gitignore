@@ -104,4 +104,4 @@ dist
 .tern-port
 
 # WWEBJS
-.auth/
+.wwebjs_auth/

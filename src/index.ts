@@ -1,6 +1,6 @@
 const { Client, LocalAuth } = require("whatsapp-web.js");
 const qrcode = require('qrcode-terminal');
-const TestHandlerClass = require("./handlers/Test.js");
+const TestHandlerClass = require("./handlers/Test.js").default;
 
 async function startClient() {
     const client = new Client({
@@ -11,10 +11,13 @@ async function startClient() {
     });
 
     client.on('qr', (qr) => {
-        qrcode.generate(qr);
+        qrcode.generate(qr, {small: true});
     });
+    client.on('ready', () => {
+        console.log('[buttons-test] Client ready')
+    })
 
-    client.on('message_create', (message) => {
+    client.on('message', (message) => {
         TestHandlerClass.handleMessage(message, client);
     })
 

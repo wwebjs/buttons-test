@@ -6,7 +6,7 @@
   "type": "commonjs",
   "scripts": {
     "build": "tsc",
-    "buttons-test": "npm run build && node ./dist/index"
+    "buttons-test": "npm run build && node --inspect ./dist/index"
   },
   "repository": {
     "type": "git",
