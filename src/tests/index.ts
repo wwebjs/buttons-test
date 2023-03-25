@@ -1,5 +1,5 @@
-const {Test1} = require('./test-1.js');
+import path = require("path");
 
-export const tests = [];
+const { exportDir } = require("../utils/exportDir");
 
-tests.push(new Test1());
+export const tests = exportDir(path.resolve(__dirname));

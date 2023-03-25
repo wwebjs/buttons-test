@@ -1,6 +1,6 @@
 const { MessageTypes } = require("whatsapp-web.js");
 import type {Client as ClientType, Message as MessageType} from 'whatsapp-web.js';
-const { tests } = require("../tests/index.js");
+const { tests } = require("../tests/index");
 
 type StateData = {
     currentState: number;
@@ -58,22 +58,27 @@ export default class TestHandlerClass {
                     }
                 } else if (action == 'reset') {
                     delete data[message.author || message.from];
-                    message.reply("Reset")
+                    message.reply("Reset data;")
+                } else if (action == 'reload') {
+                    tests.reload();
+                    message.reply('Reloaded tests');
                 }
 
                 if (!data[message.author || message.from]) { 
                     data[message.author || message.from] = {
-                        currentState: 0,
+                        currentState: 1,
                         platform: message.deviceType as StateData['platform']
                     }
                 } else {
                     data[message.author || message.from].currentState++;
                 }
 
-                if (tests[data[message.author || message.from].currentState]) {
-                    await tests[data[message.author || message.from].currentState].handle(message);
+                if (tests.items.has('test-' + data[message.author || message.from].currentState)) {
+                    const test = tests.items.get('test-' + data[message.author || message.from].currentState);
+                    await test.handle(message);
                 } else {
-                    message.reply('End of tests, type ```buttons-test reset``` to reset.')
+                    message.reply('End of tests, type ```buttons-test reset``` to reset.\ncurrent state:'+ data[message.author || message.from].currentState);
+                    data[message.author || message.from].currentState = tests.items.size;
                 }
                 
             }

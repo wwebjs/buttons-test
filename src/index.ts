@@ -1,6 +1,6 @@
 const { Client, LocalAuth } = require("whatsapp-web.js");
 const qrcode = require('qrcode-terminal');
-const TestHandlerClass = require("./handlers/Test.js").default;
+const TestHandlerClass = require("./handlers/Test").default;
 
 async function startClient() {
     const client = new Client({
