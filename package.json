@@ -3,7 +3,7 @@
   "version": "1.1.0",
   "description": "A utility to diagnose and study how buttons behave.",
   "main": "dist/index.js",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "build": "tsc",
     "buttons-test": "npm run build && node ./dist/index"

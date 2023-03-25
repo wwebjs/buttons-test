@@ -2,7 +2,8 @@
     "compilerOptions": {
         "target": "es2019",
         "outDir": "./dist",
-        "moduleResolution": "node"
+        "moduleResolution": "node",
+        "module": "CommonJS"
     },
-    "include": ["src/**/*"],
+    "include": ["src/**/**/*"],
 }

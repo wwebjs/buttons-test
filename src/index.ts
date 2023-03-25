@@ -1,11 +1,13 @@
-import * as wwebjs from "whatsapp-web.js";
-const { Client, LocalAuth } = wwebjs;
-import qrcode from 'qrcode-terminal';
-import TestHandlerClass from "./Test.js";
+const { Client, LocalAuth } = require("whatsapp-web.js");
+const qrcode = require('qrcode-terminal');
+const TestHandlerClass = require("./handlers/Test.js");
 
 async function startClient() {
     const client = new Client({
         authStrategy: new LocalAuth({ clientId: "ButtonsTest" }),
+        puppeteer: {
+            args: ['--no-sandbox']
+        }
     });
 
     client.on('qr', (qr) => {

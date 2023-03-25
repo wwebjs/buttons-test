@@ -1,6 +1,5 @@
-import { Test } from "./index.js";
-import * as wwebjs from "whatsapp-web.js";
-const { Buttons } = wwebjs;
+const { Test } = require("../classes/Test.js");
+const { Buttons } = require('whatsapp-web.js');
 
 export class Test1 extends Test {
     constructor() {

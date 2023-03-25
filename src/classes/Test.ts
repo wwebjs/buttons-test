@@ -1,5 +1,6 @@
-import { Message, MessageTypes, Client } from "whatsapp-web.js";
-import { tests } from "./tests/index.js";
+const { MessageTypes } = require("whatsapp-web.js");
+import type {Client as ClientType, Message as MessageType} from 'whatsapp-web.js';
+const { tests } = require("../tests/index.js");
 
 type StateData = {
     currentState: number;
@@ -10,7 +11,7 @@ export const data: { [jid: string]: StateData } = {};
 
 export default class TestHandlerClass {
 
-    static async handleMessage(message: Message, client: Client) {
+    static async handleMessage(message: MessageType, client: ClientType) {
         if (message.type == MessageTypes.LIST_RESPONSE) {
             message.reply("List response received")
             if (message.selectedRowId.startsWith('test') && message.selectedRowId.split(";;")[1]) {
@@ -19,8 +20,8 @@ export default class TestHandlerClass {
             }
         };
 
-        if (message.type == MessageTypes.LIST && message.author == client.info.wid._serialized) {
-            message.reply("List sent from my end.")
+        if (message.type == MessageTypes.LIST && message.author == client.info?.wid._serialized) {
+            message.reply("List sent = require(my end.")
         };
 
         if (message.type == MessageTypes.BUTTONS_RESPONSE) {
@@ -31,8 +32,8 @@ export default class TestHandlerClass {
             }
         };
 
-        if (message.dynamicReplyButtons && message.author == client.info.wid._serialized) {
-            message.reply("Buttons sent from my end.")
+        if (message.dynamicReplyButtons && message.author == client.info?.wid._serialized) {
+            message.reply("Buttons sent = require(my end.")
         };
 
         if (message.type == MessageTypes.TEMPLATE_BUTTON_REPLY) {

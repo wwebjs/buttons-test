@@ -18,6 +18,6 @@ Once the script is ready, it will listen for a text message called "buttons-test
 After that, please send me a screenshot of the chat (PLEASE BLUR ALL SENSITIVE AND PERSONAL INFORMATION) on Discord (send it on the #buttons-test channel)
 
 ## Contributing & License
-You are welcome to help me in contributing (fixing bugs, adding something important), but I don't have any guidelines for that. There is also no license for this project, use it as you like. 
+You are welcome to help me in contributing (fixing bugs, adding something constant), but I don't have any guidelines for that. There is also no license for this project, use it as you like. 
 
 ## Special Thanks
