@@ -48,26 +48,26 @@ export default class TestHandlerClass {
 
                 if (!action) {
                     const msg = await message.reply("Welcome to the ButtonsTest diagnosis tool, this tool will allow you to diagnose buttons for your system");
-                    await msg.reply("I've already detected that your viewing system is *"+message.deviceType+"*\nIs that OK? Send 'buttons-test switch IOS [or] ANDROID [or] WEB (WEB and MACOS are WEB)");
+                    await msg.reply("I've already detected that your viewing system is *"+message.deviceType+"*\nIs that OK? Send 'buttons-test switch IOS [or] ANDROID [or] WEB (WEB and MACOS are WEB)\n\nWhen unable to see a button, just type buttons-test again.");
                 } else if (action == "switch") {
                     if (["ios", "android", "web"].includes(choice.toLowerCase())) {
-                        data[message.author].platform = choice.toLowerCase() as StateData['platform'];
+                        data[message.author || message.from].platform = choice.toLowerCase() as StateData['platform'];
                         return message.reply('platform set');
                     } else {
                         return message.reply('Invalid choice, must be IOS, ANDROID, OR WEB')
                     }
                 }
 
-                if (!data[message.author]) { 
-                    data[message.author] = {
+                if (!data[message.author || message.from]) { 
+                    data[message.author || message.from] = {
                         currentState: 0,
                         platform: message.deviceType as StateData['platform']
                     }
                 } else {
-                    data[message.author].currentState++;
+                    data[message.author || message.from].currentState++;
                 }
 
-                await tests[data[message.author].currentState].handle(message);
+                await tests[data[message.author || message.from].currentState].handle(message);
             }
         }
     }
